@@ -1,5 +1,7 @@
 package grind75
 
+import "math"
+
 // 121. Best Time to Buy and Sell Stock
 
 // You are given an array prices where prices[i] is the price of a given stock on the ith day.
@@ -11,14 +13,20 @@ package grind75
 func MaxProfit(prices []int) int {
 
 	// {7,1,5,4,2}
-	// We need to find min value and max value
-	// we need to make sure min value index is before max value
-	// if there is no profit return 0
-	// Any two needs to be compared apart from themselves. So n^2 might happen, but thats not what we want anyways
-	// How to do it in n ?
-	// while min_position < max_position
-	// if next position yields a smaller item , thats our new min position
-	// same goes for max position
-	//  constraint ==> sum > 0
-	return 1
+
+	// lets try out greedy first
+	sum := 0
+	min := math.MaxInt32
+
+	for i := range prices {
+		if min > prices[i] {
+			min = prices[i]
+		}
+		if sum < prices[i]-min {
+			sum = prices[i] - min
+		}
+	}
+	return sum
+	// So greedy is causing
+
 }
