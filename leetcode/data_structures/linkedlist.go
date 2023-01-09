@@ -1,4 +1,4 @@
-package linkedlist
+package data_structures
 
 import "fmt"
 

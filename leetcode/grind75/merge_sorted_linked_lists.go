@@ -1,8 +1,6 @@
 package grind75
 
-import (
-	"algorithms.com/m/leetcode/linkedlist"
-)
+import "algorithms.com/m/leetcode/data_structures"
 
 // 21. Merge Two Sorted Lists
 // You are given the heads of two sorted linked lists list1 and list2.
@@ -13,10 +11,10 @@ import (
 
 func MergeTwoLists() {
 
-	list1 := linkedlist.InsertAndReturnFirst([]int{5, 6, 7})
-	list2 := linkedlist.InsertAndReturnFirst([]int{2, 3, 4})
+	list1 := data_structures.InsertAndReturnFirst([]int{5, 6, 7})
+	list2 := data_structures.InsertAndReturnFirst([]int{2, 3, 4})
 
-	first := &linkedlist.ListNode{}
+	first := &data_structures.ListNode{}
 	list3 := first
 	for list1 != nil && list2 != nil {
 		if list2.Val <= list1.Val {
@@ -41,5 +39,5 @@ func MergeTwoLists() {
 	} else if list2 != nil {
 		list3.Next = list2
 	}
-	linkedlist.PrintFromFirst(first.Next)
+	data_structures.PrintFromFirst(first.Next)
 }
