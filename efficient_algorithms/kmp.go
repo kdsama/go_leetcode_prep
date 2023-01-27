@@ -30,8 +30,8 @@ func failureLinks(pattern string) []int {
 }
 
 func KMP() {
-	T := `asdjaslkdjaslkjdlaksdjaleiruoweinrpieabbababaurno;anesodluasoaiudnaisoudnaosiupdn`
-	pattern := "abbababa"
+	T := `OMNOONOMNEMOMNOMNOM	`
+	pattern := "abacaabaca"
 	fail := failureLinks(pattern)
 	var final_pos int
 	i := 0
@@ -41,6 +41,7 @@ func KMP() {
 		if T[i] == pattern[state] {
 			i += 1
 			state += 1
+			fmt.Println(pattern[0:state])
 			if state == len(pattern) {
 				final_pos = i - state
 				break
@@ -50,10 +51,11 @@ func KMP() {
 				state = fail[state]
 			} else {
 				i += 1
+				fmt.Println(pattern[0:state])
 			}
 
 		}
 	}
-	fmt.Printf("Final string should be ababaca :: %s", T[final_pos:final_pos+len(pattern)])
+	fmt.Printf("Final string should be :: %s", T[final_pos:final_pos+len(pattern)])
 
 }
