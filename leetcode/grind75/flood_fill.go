@@ -1,5 +1,7 @@
 package grind75
 
+import "math"
+
 // An image is represented by an m x n integer grid image where image[i][j] represents the pixel value of the image.
 
 // You are also given three integers sr, sc, and color. You should perform a flood fill on the image starting from the pixel image[sr][sc].
@@ -32,4 +34,18 @@ func changeColor(image [][]int, x, y int, color, newColor *int) {
 			changeColor(image, x, y+1, color, newColor)
 		}
 	}
+}
+
+type Node struct {
+	Left  *Node
+	Right *Node
+	Value float64
+}
+
+func getMinSumPath(tree *Node) float64 {
+	if tree.Left == nil && tree.Right == nil {
+		return tree.Value
+	}
+	min := math.Min(tree.Value+getMinSumPath(tree.Left), tree.Value+getMinSumPath(tree.Right))
+	return min
 }
