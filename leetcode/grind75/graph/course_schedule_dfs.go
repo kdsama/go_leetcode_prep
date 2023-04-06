@@ -1,4 +1,4 @@
-package grind75
+package graph
 
 func CourseSchedule(numCourses int, prerequisites [][]int) bool {
 
@@ -35,6 +35,5 @@ func CourseScheduleDFS(adjList *map[int][]int, visited map[int]bool, key int) bo
 	}
 	delete(visited, key)
 	(*adjList)[key] = []int{}
-
 	return to_return
 }
