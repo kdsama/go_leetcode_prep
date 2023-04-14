@@ -1,7 +1,5 @@
 package graph
 
-import "fmt"
-
 func FindOrder(numCourses int, prerequisites [][]int) []int {
 	to_return := []int{}
 	visited := map[int]bool{}
@@ -12,7 +10,6 @@ func FindOrder(numCourses int, prerequisites [][]int) []int {
 	for i := range prerequisites {
 		adj[prerequisites[i][0]] = append(adj[prerequisites[i][0]], prerequisites[i][1])
 	}
-	fmt.Println(adj)
 	if len(prerequisites) == 0 {
 		for i := 0; i < numCourses; i++ {
 			to_return = append(to_return, i)
