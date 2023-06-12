@@ -2,7 +2,9 @@ package efficientalgorithms
 
 import (
 	"fmt"
+	"log"
 	"sync"
+	"time"
 )
 
 var waitgroup = sync.WaitGroup{}
@@ -16,6 +18,7 @@ func ParallelKMP(block string, pattern string) {
 
 	len_pattern := len(pattern)
 	len_block := len(block)
+	start := time.Now()
 	for b := 0; b < len_block/len_pattern; b++ {
 		waitgroup.Add(1)
 		// how to do the overlap here ?
@@ -23,10 +26,13 @@ func ParallelKMP(block string, pattern string) {
 		if end > len(block) {
 			end = len(block)
 		}
-		fmt.Println(block[b*len_pattern : end])
+
 		go wG_KMP(block[b*len_pattern:end], fail, pattern)
 	}
+
 	waitgroup.Wait()
+	elapsed := time.Since(start)
+	log.Printf("Time taken %s", elapsed)
 }
 
 func wG_failureLinks(pattern string) []int {

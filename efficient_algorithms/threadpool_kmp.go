@@ -38,7 +38,7 @@ func TP_ParallelKMP(block string, patt string) {
 		if end > len(block) {
 			end = len(block)
 		}
-		fmt.Println("Sending ", block[b*len_pattern:end])
+
 		bf_channels <- block[b*len_pattern : end]
 
 	}
@@ -84,10 +84,7 @@ func tp_KMP(bf_channels chan string) {
 		var final_pos int
 		// T := string(t)
 		// fmt.Println("?????????????", T, t)
-		if len(T) < len(pattern) {
 
-			return
-		}
 		i := 0
 		state := 0
 
@@ -110,7 +107,7 @@ func tp_KMP(bf_channels chan string) {
 
 			}
 		}
-		fmt.Println(T[final_pos:final_pos+len(pattern)], pattern)
+
 		if T[final_pos:final_pos+len(pattern)] == pattern {
 			fmt.Printf("Found string %s \n", T[final_pos:final_pos+len(pattern)])
 		}
