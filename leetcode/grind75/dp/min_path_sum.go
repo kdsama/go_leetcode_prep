@@ -1,4 +1,4 @@
-package dynamicprogramming
+package dp
 
 func minPathSum(grid [][]int) int {
 	m := len(grid)
