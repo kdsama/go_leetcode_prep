@@ -17,6 +17,7 @@ func merge(intervals [][]int) [][]int {
 			curr = intervals[i+1]
 
 			if end < curr[0] {
+
 				break
 			}
 			if !(end > curr[1]) {
@@ -28,9 +29,4 @@ func merge(intervals [][]int) [][]int {
 		i++
 	}
 	return new_arr
-}
-
-func remove(s *[]string, i int) *[]string {
-	(*s)[i] = (*s)[len(s)-1]
-	return s[:len(s)-1]
 }
